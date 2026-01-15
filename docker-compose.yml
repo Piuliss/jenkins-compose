@@ -1,0 +1,34 @@
+services:
+  jenkins:
+    image: honeyjack/jenkins-compose:0.0.3
+    container_name: jenkins
+    restart: unless-stopped
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JENKINS_OPTS=--httpPort=8080
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yamll
+      - JAVA_OPTS=-Xmx2048m -Xms1024m
+      - JAVA_HOME=/opt/java/openjdk
+      - JAVA_TOOL_OPTIONS=-Djdk.spawnhelper.path=/opt/java/openjdk/lib/jspawnhelper
+    networks:
+      - jenkins-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/login || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  jenkins-data:
+    driver: local
+
+networks:
+  jenkins-network:
+    driver: bridge

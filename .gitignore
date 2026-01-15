@@ -1,0 +1,82 @@
+# Variables de entorno y secretos
+.env
+.env.*
+*.env
+!.env.example
+secrets/
+*.key
+*.pem
+*.p12
+*.jks
+
+# Docker volumes y datos
+jenkins-data/
+volumes/
+*.tar.gz
+
+# Logs
+*.log
+logs/
+docker-compose.log
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# Archivos del sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE / Editores
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# Jenkins específico
+jenkins_home/
+workspace/
+*.war
+
+# Archivos de backup
+*.backup
+*.bak
+backups/
+*.sql
+
+# Archivos compilados o generados
+*.class
+*.pyc
+__pycache__/
+*.o
+*.so
+*.dylib
+
+# Node modules (si tienes scripts Node)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python (si tienes scripts Python)
+*.pyc
+__pycache__/
+venv/
+env/
+.venv/
+
+# Scripts generados
+*.sh.log
+build.log
